@@ -67,7 +67,12 @@ while line_two[g] != gets_off
 	g = g + 1
 end
 #puts g
-leg2_number = (us_position - g).abs 
+if line_one[n] == "Union Square"
+	leg2_number = (us_position - g).abs
+else
+	leg2_number = 0
+end
+
 #puts "Your subway stop is #{leg2_number} stops away"
 
 total_stops = leg1_number + leg2_number
