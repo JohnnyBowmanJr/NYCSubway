@@ -8,6 +8,7 @@ gets_on = gets.strip.chomp
 puts "What line is that"
 line_one = gets.strip.chomp
 
+#convert people's answers (strings) into names of the arrays
 case line_one
 	when "nline"
 		line_one = nline
@@ -31,49 +32,43 @@ case line_two
 		line_two = sixline
 end
 
-#find position of starting point subwy stop in array
+#find position of subway stop person gets on at in array
 i = 0
-
 while line_one[i] != gets_on
 	i = i + 1
-
 end
 starting_point = i
-#puts i
 
-#find position of getting off point subway stop in array
+#find position of subway stop person gets off at in array
 n = 0
 while (line_one[n] != gets_off) && (line_one[n] != "Union Square")
 	n = n + 1
 end
 ending_point = n
-#puts n
 
 #find difference in stops between starting and ending points
 leg1_number = (starting_point - ending_point).abs
-#puts "Your subway stop is #{leg1_number} stops away"
 
-#find starting point of Unions Square
+#find starting point of Union Square
 u = 0
 while line_two[u] != "Union Square"
 	u = u + 1
 end
 us_position = u
-#puts u
 
 #find number of stops from Union Station to destination
 g = 0
 while line_two[g] != gets_off
 	g = g + 1
 end
-#puts g
+
+#if person had to switch at Union Square, calculate the number of stops in leg 2. If person doesn't get off, 
+#don't calculate leg 2.
 if line_one[n] == "Union Square"
 	leg2_number = (us_position - g).abs
 else
 	leg2_number = 0
 end
-
-#puts "Your subway stop is #{leg2_number} stops away"
 
 total_stops = leg1_number + leg2_number
 
